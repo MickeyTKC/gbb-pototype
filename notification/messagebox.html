@@ -26,7 +26,6 @@
             padding: 0;
         }
         .message-box {
-            display: none; /* Initially hidden */
             position: fixed;
             bottom: 20px;
             left: 50%;
@@ -39,6 +38,7 @@
             z-index: 1000;
             animation: fadeIn 0.5s;
             opacity: 0.85;
+            width: max-content; /* Adjust width as needed */
         }
     </style>
     <div class="message-box" id="messageBox">
@@ -46,7 +46,6 @@
     </div>
     <script>
         // Show the message box when scrolled to the top
-        messageBox.style.display = 'block';
         window.addEventListener('scroll', function() {
             messageBox = $("#messageBox")
             if (window.scrollY === 0) {
