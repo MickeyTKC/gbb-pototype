@@ -57,17 +57,22 @@
     </div>
     <script>
         // Show the message box when scrolled to the top
+        const hide = () => {
+            setTimeout(function () {
+                messageBox = $("#messageBox")
+                messageBox.fadeOut(1000, function () {
+                    messageBox.hide();
+                })
+            }, 5000)
+        }
+        hide()
         window.addEventListener('scroll', function () {
             messageBox = $("#messageBox")
             if (window.scrollY === 0) {
                 messageBox.fadeIn(1000, function () {
                     messageBox.show();
                 })
-                setTimeout(() => {
-                    messageBox.fadeOut(1000, function () {
-                        messageBox.hide();
-                    })
-                }, 5000)
+                hide()
             } else {
                 messageBox.fadeOut(1000, function () {
                     messageBox.hide();
