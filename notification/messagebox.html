@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Feature Notification</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        .container {
+            font-family: Arial, sans-serif;
+            height: 200vh; /* Make the page taller for scrolling */
+            background-color: orange;
+            margin: 0;
+            padding: 0;
+        }
+        .message-box {
+            display: none; /* Initially hidden */
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 30px; /* Rounded corners for a cloud shape */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            z-index: 1000;
+            animation: fadeIn 0.5s;
+            opacity: 0.85;
+        }
+    </style>
+    <div class="message-box" id="messageBox">
+        <i class="fa fa-arrow-down pr-3" aria-hidden="true"></i>全新推出<strong>"中港包車"</strong>服務
+    </div>
+    <script>
+        // Show the message box when scrolled to the top
+        messageBox.style.display = 'block';
+        window.addEventListener('scroll', function() {
+            messageBox = $("#messageBox")
+            if (window.scrollY === 0) {
+                $(messageBox).fadeIn(1000, function() {
+                    messageBox.show();
+                })
+            } else {
+                $(messageBox).fadeOut(1000, function() {
+                    messageBox.hide();
+                })
+            }
+        });
+    </script>
+</body>
+</html>
