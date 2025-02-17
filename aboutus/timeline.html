@@ -272,10 +272,10 @@
                 <h4>將致力為你服務</h4>
                 <p>我們的願景是透過數碼化的服務，打造更便捷、環保的城際出行體驗，為每位用戶提供更多班次和選擇，成為最佳的城際出行夥伴，為區內居民帶來數碼化生活，拉近每一人的距離。</p>
                 <div style="text-align: center;">
-                    <a href="#info" class="btn btn-lg btn-light" style="color:#ed8323"><i class="fa fa-arrow-down"
-                            aria-hidden="true"></i>
+                    <button onclick="smoothScroll('#info', 1000)" class="btn btn-lg btn-light" style="color:#ed8323"><i
+                            class="fa fa-arrow-down" aria-hidden="true"></i>
                         了解更多 GoByBus
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -407,6 +407,32 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script>
+        function smoothScroll(target, duration) {
+            const targetElement = document.querySelector(target);
+            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+    </script>
 </body>
 
 </html>
